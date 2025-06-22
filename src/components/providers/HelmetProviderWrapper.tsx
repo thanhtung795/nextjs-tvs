@@ -1,5 +1,5 @@
+// HelmetProviderWrapper.tsx
 "use client";
-
 import { HelmetProvider } from "react-helmet-async";
 
 export default function HelmetProviderWrapper({
@@ -7,5 +7,5 @@ export default function HelmetProviderWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  return <HelmetProvider>{children}</HelmetProvider>;
+  return <HelmetProvider context={{}}>{children}</HelmetProvider>;
 }
