@@ -79,10 +79,7 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({
         toggleSubmenu,
       }}
     >
-      <div className="bg-slate-100">
-
       {children}
-      </div>
     </SidebarContext.Provider>
   );
 };

@@ -1,8 +1,14 @@
 "use client";
 
-import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
 import ChartTab from "../common/ChartTab";
+
+// Dynamic import for react-apexcharts to avoid SSR issues
+const Chart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+  loading: () => <div className="h-[300px] flex items-center justify-center">Loading chart...</div>
+});
 
 export default function StatisticsChart() {
   const options: ApexOptions = {

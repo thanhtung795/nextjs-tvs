@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import type React from "react";
+import Link from "next/link";
 
 interface DropdownItemProps {
   tag?: "a" | "button";

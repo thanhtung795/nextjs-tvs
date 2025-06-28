@@ -2,12 +2,9 @@
 import { useState } from "react";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
-import { MoreHorizontal } from "lucide-react";
+import { MoreDotIcon } from "../../icons";
+import CountryMap from "./CountryMap";
 
-import dynamic from "next/dynamic";
-const CountryMap = dynamic(() => import("./CountryMap"), {
-  ssr: false,
-});
 export default function DemographicCard() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +28,7 @@ export default function DemographicCard() {
         </div>
         <div className="relative inline-block">
           <button className="dropdown-toggle" onClick={toggleDropdown}>
-            <MoreHorizontal  className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 size-6" />
+            <MoreDotIcon className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 size-6" />
           </button>
           <Dropdown
             isOpen={isOpen}
@@ -58,7 +55,7 @@ export default function DemographicCard() {
           id="mapOne"
           className="mapOne map-btn -mx-4 -my-6 h-[212px] w-[252px] 2xsm:w-[307px] xsm:w-[358px] sm:-mx-6 md:w-[668px] lg:w-[634px] xl:w-[393px] 2xl:w-[554px]"
         >
-          {/* <CountryMap /> */}
+          <CountryMap />
         </div>
       </div>
 

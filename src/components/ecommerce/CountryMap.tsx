@@ -1,6 +1,7 @@
-// react plugin for creating vector maps
-import { VectorMap } from "@react-jvectormap/core";
-import { worldMill } from "@react-jvectormap/world";
+"use client";
+
+import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 
 // Define the component props
 interface CountryMapProps {
@@ -8,9 +9,30 @@ interface CountryMapProps {
 }
 
 const CountryMap: React.FC<CountryMapProps> = ({ mapColor }) => {
+  const [VectorMapComponent, setVectorMapComponent] = useState<any>(null);
+  const [worldMillData, setWorldMillData] = useState<any>(null);
+
+  useEffect(() => {
+    // Import VectorMap and world data only on client side
+    Promise.all([
+      import("@react-jvectormap/core"),
+      import("@react-jvectormap/world")
+    ]).then(([vectorMapModule, worldModule]) => {
+      setVectorMapComponent(() => vectorMapModule.VectorMap);
+      setWorldMillData(worldModule.worldMill);
+    });
+  }, []);
+
+  if (!VectorMapComponent || !worldMillData) {
+    return (
+      <div className="h-[400px] flex items-center justify-center">
+        Loading map...
+      </div>
+    );
+  }
   return (
-    <VectorMap
-      map={worldMill}
+    <VectorMapComponent
+      map={worldMillData}
       backgroundColor="transparent"
       markerStyle={{
         initial: {

@@ -1,6 +1,0 @@
-{
-  "SITE_DB": "DEV",
-  "API_KEY": "DEV2025",
-  "URL_API_PROD": "https://tvs_api.tinvietsoft.com",
-  "URL_API_DEV": "http://14.241.235.252:8585/tvs_api"
-}

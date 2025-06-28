@@ -1,10 +1,16 @@
 "use client";
-import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
 import { ApexOptions } from "apexcharts";
 import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
+import { MoreDotIcon } from "../../icons";
 import { useState } from "react";
-import { MoreHorizontal } from "lucide-react";
+
+// Dynamic import for react-apexcharts to avoid SSR issues
+const Chart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+  loading: () => <div className="h-[180px] flex items-center justify-center">Loading chart...</div>
+});
 
 export default function MonthlySalesChart() {
   const options: ApexOptions = {
@@ -109,7 +115,7 @@ export default function MonthlySalesChart() {
         </h3>
         <div className="relative inline-block">
           <button className="dropdown-toggle" onClick={toggleDropdown}>
-            <MoreHorizontal  className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 size-6" />
+            <MoreDotIcon className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 size-6" />
           </button>
           <Dropdown
             isOpen={isOpen}

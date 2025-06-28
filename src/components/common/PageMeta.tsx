@@ -1,20 +1,19 @@
-// components/common/PageMeta.tsx
-"use client";
-
-import { Helmet } from "react-helmet-async";
-
-// ✅ Component SEO meta
+// In Next.js 15 app router, we use metadata API instead of react-helmet
+// This component is kept for compatibility but does nothing
 const PageMeta = ({
   title,
   description,
 }: {
   title: string;
   description: string;
-}) => (
-  <Helmet>
-    <title>{title}</title>
-    <meta name="description" content={description} />
-  </Helmet>
+}) => {
+  // In Next.js app router, metadata is handled by generateMetadata or metadata export
+  // This component is kept for compatibility but doesn't render anything
+  return null;
+};
+
+export const AppWrapper = ({ children }: { children: React.ReactNode }) => (
+  <>{children}</>
 );
 
 export default PageMeta;
